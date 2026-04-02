@@ -1,0 +1,20 @@
+.lp-certified {
+  text-align: center;
+  padding-block: 30px;
+  @include md-up {
+    padding-block: 60px;
+  }
+  img {
+    height: 72px;
+    width: auto;
+    @include md-up {
+      height: 100px;
+    }
+  }
+  &__text {
+    font-size: 18px;
+    @include md-up {
+      font-size: 21px;
+    }
+  }
+}

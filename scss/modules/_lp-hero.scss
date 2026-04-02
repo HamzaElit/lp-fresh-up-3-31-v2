@@ -1,0 +1,323 @@
+@import "../mixins/mixins-master";
+
+.lp-hero {
+  position: relative;
+  width: 100%;
+  padding: 0;
+
+  @include lg-up {
+    padding: 2.4rem;
+  }
+
+  &__inner {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    max-width: 1280px;
+    background-color: #003870;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+
+    @include lg-up {
+      border-radius: 2.4rem;
+      min-height: 60rem;
+    }
+  }
+
+  &__bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    display: block;
+
+    &-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top center;
+
+      @include lg-up {
+        object-position: right center;
+      }
+    }
+  }
+
+  &__content-container {
+    position: relative;
+    z-index: 10;
+    display: grid;
+    grid-template-columns: 1fr;
+    padding-top: 6rem;
+    padding-bottom: 0; // Partners box touches bottom
+
+    @include lg-up {
+      min-height: 100%;
+      padding-top: 4rem;
+      padding-bottom: 8rem;
+      align-content: center;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.6rem;
+    justify-items: start;
+    height: 100%;
+    align-content: start;
+
+    @include lg-up {
+      max-width: 51rem;
+      gap: 2.5rem;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-titles);
+    font-weight: 700;
+    font-size: 2.3rem;
+    line-height: 1.2;
+    color: var(--White);
+    max-width: 220px;
+    margin: 0;
+    width: 100%; // Ensure it takes full width on mobile
+
+    @include lg-up {
+      max-width: 100%;
+      font-size: 3.5rem;
+    }
+
+    &-bold {
+      font-weight: 900;
+    }
+  }
+
+  &__subtitle {
+    display: none;
+
+    @include lg-up {
+      display: block;
+      font-family: var(--font-text);
+      font-weight: 400;
+      font-size: 2.4rem;
+      line-height: 1.4;
+      color: var(--White);
+      margin: 0;
+    }
+
+    &--mobile {
+      display: block;
+      color: var(--White);
+      text-align: center;
+      margin-bottom: 2.4rem;
+
+      @include lg-up {
+        display: none;
+      }
+    }
+  }
+
+  &__btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.4rem 3.2rem;
+    border-radius: 5rem;
+    font-family: var(--font-text);
+    font-weight: 700;
+    font-size: 1.6rem;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+
+    &--gold {
+      backdrop-filter: blur(30px);
+      --webkit-backdrop-filter: blur(30px);
+      background-color: rgba(255, 255, 255, 0.26);
+      color: var(--White);
+
+      @include lg-up {
+        display: none;
+      }
+
+      &:hover {
+        background-color: var(--Primary);
+      }
+    }
+
+    &--primary {
+      display: none;
+
+      @include lg-up {
+        font-size: 2.8rem;
+        padding: 1.5rem;
+        width: 458px;
+        display: inline-flex;
+        background-color: #78b4f0;
+        color: var(--White);
+      }
+
+      &:hover {
+        background-color: darken(#78b4f0, 10%);
+      }
+    }
+
+    &--primary-mobile {
+      background-color: #78b4f0;
+      color: var(--White);
+      width: 100%;
+      max-width: 32rem;
+      margin: 0 auto;
+
+      @include lg-up {
+        display: none;
+      }
+
+      &:hover {
+        background-color: darken(#78b4f0, 10%);
+      }
+    }
+  }
+
+  &__partners {
+    margin-top: auto;
+    backdrop-filter: blur(30px);
+    --webkit-backdrop-filter: blur(30px);
+    background-color: rgba(255, 255, 255, 0.53);
+    padding: 2rem 3rem;
+    border-radius: 1.6rem 1.6rem 0 0; // Flat bottom for mobile to connect to blue box
+    display: inline-flex;
+    justify-content: center;
+    justify-self: center;
+    width: 100%;
+    margin-top: 4rem;
+
+    @include lg-up {
+      width: auto;
+      margin-top: 0;
+      justify-self: start;
+      border-radius: 1.6rem; // Full pill on desktop
+    }
+
+    img {
+      max-height: 3.2rem;
+      width: auto;
+      max-width: 100%;
+
+      @include lg-up {
+        max-height: 4rem;
+      }
+    }
+  }
+
+  &__bottom {
+    position: relative;
+    z-index: 10;
+    width: 100%;
+    margin: 0 auto;
+    max-width: calc(100% - 6rem);
+    background-color: #002d5a;
+
+    @include lg-up {
+      background-color: transparent;
+      margin-top: -4.6rem; // Overlap background by half
+    }
+
+    &-container {
+      @include lg-up {
+        background-color: #002d5a;
+        border-radius: 1.6rem;
+        padding: 3rem 3.2rem;
+      }
+    }
+  }
+
+  &__features {
+    list-style: none;
+    padding: 3.6rem 0;
+    margin: 0;
+    // Uses Grid for clean alignment
+    display: grid;
+    grid-template-columns: max-content; // Shrink-wrap to longest item
+    justify-content: center; // Center block horizontally
+    gap: 2rem;
+
+    @include lg-up {
+      gap: 8rem;
+      grid-template-columns: repeat(3, max-content);
+      padding: 0;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      color: var(--White);
+      font-family: var(--font-text);
+      font-size: 1.6rem;
+      font-weight: 700;
+
+      svg {
+        flex-shrink: 0;
+        width: 2.4rem;
+        height: 2.4rem;
+      }
+    }
+  }
+
+  &__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    background-color: #e6f0fa;
+    color: #78b4f0;
+    padding: 0.3rem 1rem 0.3rem 1.2rem;
+    border-radius: 2rem;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-left: 0.8rem;
+
+    @include lg-up {
+      display: none;
+    }
+
+    i {
+      font-style: italic;
+      background-color: #78b4f0;
+      color: #fff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 1.6rem;
+      height: 1.6rem;
+      border-radius: 50%;
+      font-size: 1rem;
+      text-transform: lowercase;
+      font-weight: 400;
+    }
+  }
+
+  &__mobile-bottom-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: 4rem;
+
+    @include lg-up {
+      display: none;
+    }
+  }
+
+  &__note {
+    font-family: var(--font-text);
+    font-size: 1.4rem;
+    color: var(--White);
+    margin-top: 1.2rem;
+  }
+}

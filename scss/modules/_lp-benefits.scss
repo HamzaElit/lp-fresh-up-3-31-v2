@@ -1,0 +1,115 @@
+@import "../mixins/mixins-master";
+
+.lp-benefits {
+  padding: 6rem 0;
+  padding-top: 1rem;
+
+  @include lg-up {
+    padding: 10rem 0;
+    padding-top: 4rem;
+  }
+
+  &__header {
+    margin-bottom: 3rem;
+    display: block;
+
+    @include lg-up {
+      margin-bottom: 6rem;
+    }
+  }
+
+  &__title {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    font-family: var(--font-titles);
+    font-size: 3.6rem;
+    font-weight: 900;
+    color: #1a1a1a;
+    line-height: 1.25;
+    margin: 0;
+    text-align: center;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4.8rem; // Accommodate badge space on mobile
+
+    @include lg-up {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2.4rem;
+    }
+  }
+
+  &__card {
+    position: relative;
+    background-color: #ffffff;
+    border-radius: 1.6rem;
+    padding: 3.6rem 2.4rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.16);
+    height: 100%;
+
+    @include lg-up {
+      padding: 4.8rem 3.2rem;
+    }
+
+    &--highlight {
+      background-color: #e8f1fa;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: -1.6rem;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #f1f4f6;
+    border: 1px solid #b3d4f8;
+    color: #6bb2fb;
+    font-family: var(--font-text);
+    font-size: 1.4rem;
+    font-weight: 800;
+    padding: 0.5rem 2.4rem;
+    border-radius: 3rem;
+    white-space: nowrap;
+    z-index: 2;
+  }
+
+  &__card-title {
+    font-family: var(--font-titles);
+    font-size: 1.8rem;
+    font-weight: 900;
+    color: #1a1a1a;
+    line-height: 1.35;
+    margin: 0 0 3.2rem 0;
+
+    @include lg-up {
+      min-height: 52px;
+      display: flex;
+      align-items: flex-end;
+      font-size: 2rem;
+    }
+  }
+
+  &__card-img {
+    height: 12rem;
+    width: auto;
+    object-fit: contain;
+    margin-bottom: 3.2rem;
+    flex-shrink: 0;
+  }
+
+  &__card-text {
+    font-family: var(--font-text);
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: #4a4a4a;
+    line-height: 1.6;
+    margin: 0;
+  }
+}

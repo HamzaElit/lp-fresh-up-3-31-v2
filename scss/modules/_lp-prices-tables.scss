@@ -1,0 +1,332 @@
+.mobile-only {
+  @include lg-up {
+    display: none !important;
+  }
+}
+
+.lp-prices-tables {
+  background-color: var(--White);
+  padding: var(--block-gap) 0;
+
+  &__header-wrap {
+    position: relative;
+    margin-bottom: 3rem;
+    text-align: left;
+
+    @include lg-up {
+      margin-bottom: 6rem;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-titles);
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.2;
+    margin: 0;
+    text-align: center;
+
+    @include lg-up {
+      font-size: 4rem;
+    }
+  }
+
+  &__content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 4rem;
+
+    @include lg-up {
+      grid-template-columns: 1fr;
+      gap: 6rem;
+    }
+  }
+
+  // ── Mobile Tabs ──────────────────────────────────────────
+  &__tabs {
+    display: flex;
+    background-color: var(--Primary);
+    border-radius: 50px;
+    padding: 6px;
+    margin-bottom: 2.5rem;
+
+    @include lg-up {
+      display: none; // Hide tabs on desktop
+    }
+  }
+
+  &__tab-btn {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--White);
+    font-family: var(--font-text);
+    font-weight: 600;
+    font-size: 1.6rem;
+    padding: 1.2rem 1rem;
+    cursor: pointer;
+    border-radius: 50px;
+    transition: background-color 0.3s;
+
+    &.active {
+      background-color: var(--Primary-4);
+    }
+  }
+
+  // ── Desktop Layout & Tables ──────────────────────────────
+  &__tables-container {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    @include lg-up {
+      grid-template-columns: 1fr 1.4fr 1fr;
+      align-items: flex-end;
+      gap: 1.4rem;
+    }
+  }
+
+  &__table-wrapper {
+    display: none; // Hide both by default on mobile, js will handle
+    flex-direction: column;
+
+    &.active {
+      display: flex;
+    }
+
+    @include lg-up {
+      display: flex; // Always show both on desktop
+    }
+  }
+
+  &__table-title-btn {
+    display: none; // Only for desktop
+
+    @include lg-up {
+      display: inline-block;
+      background-color: var(--Primary-4);
+      color: var(--White);
+      font-family: var(--font-text);
+      min-width: 165px;
+      font-weight: 600;
+      font-size: 1.6rem;
+      padding: 1rem 3rem;
+      border-radius: 50px;
+      text-align: center;
+      margin: 0 auto 3rem auto; // Center it above the table
+    }
+  }
+
+  &__table {
+    background-color: #e2ddd5;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 100%;
+
+    // Highlight blue columns
+    &--turkey {
+      .lp-prices-tables__col:first-child {
+        background-color: var(--Primary-4);
+        color: var(--White);
+      }
+    }
+
+    &--uk {
+      .lp-prices-tables__col:first-child {
+        background-color: var(--Primary-4);
+        color: var(--White);
+      }
+      .lp-prices-tables__col:last-child {
+        color: #db3c3c; // Orange/red color for UK prices
+      }
+    }
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+
+    &--header {
+      border-bottom: 2px solid var(--White);
+      font-weight: 800;
+      color: var(--Dark-Grey);
+
+      .lp-prices-tables__col {
+        padding: 2rem 1rem;
+        font-size: 1.5rem;
+        background-color: #dedbd7 !important;
+        color: #403f3e !important;
+        font-weight: 900;
+
+        @include lg-up {
+          font-size: 1.6rem;
+        }
+      }
+    }
+
+    &--footer {
+      border-bottom: none;
+
+      .lp-prices-tables__col {
+        padding: 0.8rem 1rem 2rem;
+        font-size: 1rem;
+
+        @include lg-up {
+          font-size: 1.2rem;
+          color: var(--Black) !important;
+        }
+      }
+    }
+  }
+
+  &__col {
+    padding: 1.1rem 1rem;
+    text-align: center;
+    font-family: var(--font-text);
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    @include lg-up {
+      font-size: 1.6rem;
+      padding: 1.1rem 1rem;
+    }
+
+    &:first-child {
+      border-right: 1px solid var(--White);
+    }
+  }
+
+  // ── Center Image ─────────────────────────────────────────
+  &__image-col {
+    border-radius: 20px;
+    overflow: hidden;
+    display: none; // Keep standard img logic, wait for JS or media query if needed
+
+    @include lg-up {
+      display: block; // center block on desktop
+    }
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      border-radius: 20px;
+      @include lg-up {
+        min-height: 405px;
+      }
+    }
+  }
+
+  // mobile image
+  &__mobile-image {
+    display: block;
+    width: calc(100% + 6rem);
+    margin-left: -3rem;
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+    overflow: hidden;
+
+    @include lg-up {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+      display: block;
+    }
+  }
+
+  // ── Info & CTA Section ───────────────────────────────────
+  &__info-section {
+    margin-top: 3rem;
+    max-width: 740px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+
+    @include lg-up {
+      text-align: center;
+      margin-top: 5rem;
+    }
+  }
+
+  &__text {
+    font-family: var(--font-text);
+    font-size: 1.6rem;
+    line-height: 1.6;
+    margin-bottom: 2.5rem;
+
+    @include lg-up {
+      font-size: 2.2rem;
+    }
+  }
+
+  &__lists {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+
+    @include lg-up {
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2.5rem 4rem;
+      margin-bottom: 5rem;
+    }
+  }
+
+  &__list-item {
+    font-family: var(--font-text);
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+
+    @include lg-up {
+      font-size: 2.2rem;
+      justify-content: center;
+
+      &:first-child {
+        flex: 1 1 100%; // Make first item full width
+      }
+    }
+
+    svg {
+      width: 24px;
+      height: 24px;
+      flex-shrink: 0;
+    }
+  }
+
+  .lp-cta-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include lg-up {
+      margin-top: 2rem;
+    }
+
+    .lp-btn {
+      &__arrow {
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='25.243' viewBox='0 0 24 25.243'%3E%3Cpath d='M7.5,18h21M18,7.5,28.5,18,18,28.5' transform='translate(-6 -5.379)' fill='none' stroke='%23014799' stroke-linecap='round' stroke-linejoin='round' stroke-width='3'/%3E%3C/svg%3E%0A");
+      }
+
+      @include hover {
+        .lp-btn__arrow {
+          background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='25.243' viewBox='0 0 24 25.243'%3E%3Cpath d='M7.5,18h21M18,7.5,28.5,18,18,28.5' transform='translate(-6 -5.379)' fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='3'/%3E%3C/svg%3E%0A");
+        }
+      }
+    }
+
+    .lp-cta-subtitle {
+      color: #000000;
+    }
+  }
+}

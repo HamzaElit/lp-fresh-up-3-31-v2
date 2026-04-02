@@ -1,0 +1,245 @@
+@import "../mixins/mixins-master";
+
+.lp-package {
+  background-color: #f1f1f1;
+  padding: 5rem 0;
+
+  @include lg-up {
+    padding: 8rem 0;
+  }
+
+  &__header {
+    text-align: center;
+    margin-bottom: 4rem;
+
+    @include lg-up {
+      margin-bottom: 5rem;
+    }
+  }
+
+  &__title {
+    font-family: var(--font-titles);
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.3;
+    color: #1a1a1a;
+    margin: 0 0 1.5rem 0;
+
+    @include lg-up {
+      font-size: 3.4rem;
+    }
+  }
+
+  &__text {
+    font-family: var(--font-text);
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #4a4a4a;
+    max-width: 600px;
+    margin: 0 auto;
+
+    @include lg-up {
+      font-size: 1.7rem;
+    }
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    margin-bottom: 4rem;
+    margin-top: 7rem;
+
+    @include lg-up {
+      grid-template-columns: 1.3fr 1fr;
+      align-items: center;
+      justify-content: center;
+      gap: 3.3rem;
+      margin-top: 0;
+    }
+  }
+
+  &__image {
+    width: 100%;
+
+    img {
+      width: 100%;
+      height: auto;
+      border-radius: 20px;
+    }
+  }
+
+  &__table-wrapper {
+    position: relative;
+    width: 100%;
+    z-index: 1;
+  }
+
+  &__highlight {
+    position: absolute;
+    top: -45px;
+    bottom: -25px;
+    left: calc(100% - 140px); // Mob: 70 + 70
+    width: 70px;
+    background-color: #004799;
+
+    /* New border and shadow logic */
+    box-sizing: content-box;
+    border: 2px solid #ffffff;
+    margin-left: -2px; /* Pull left exactly the border width to align perfectly */
+    border-radius: 35px 35px 25px 25px; // Increase top radius to match extra height
+    box-shadow: 0 6px 25px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+
+    @include lg-up {
+      top: -55px;
+      bottom: -30px;
+      left: calc(100% - 190px); // Desk: 95 + 95
+      width: 95px;
+      border-radius: 45px 45px 30px 30px;
+      border: 3px solid #ffffff;
+      margin-left: -3px;
+    }
+  }
+
+  &__highlight-icon-wrap {
+    text-align: center;
+    padding-top: 15px;
+
+    @include lg-up {
+      padding-top: 20px;
+    }
+  }
+
+  &__highlight-icon {
+    width: 40px;
+    height: auto;
+
+    @include lg-up {
+      width: 50px;
+    }
+  }
+
+  &__table {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 1fr 70px 70px;
+
+    @include lg-up {
+      grid-template-columns: 1fr 95px 95px;
+    }
+  }
+
+  &__cell {
+    display: flex;
+    align-items: center;
+    font-family: var(--font-text);
+
+    &--vorteile {
+      padding: 1.5rem 1rem 1.5rem 1.5rem;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #1a1a1a;
+      border-bottom: 2px solid #f1f1f1;
+      background-color: #b3d5fc;
+
+      @include lg-up {
+        font-size: 1.4rem;
+        padding: 1.6rem 2rem;
+      }
+    }
+
+    &--elit {
+      justify-content: center;
+      background-color: transparent; // let highlight show
+      border-bottom: 2px solid #ffffff; // white line separator
+      // Note: we use 2px solid #ffffff so the thickness matches the grey gaps in other columns.
+    }
+
+    &--andere {
+      justify-content: center;
+      border-bottom: 2px solid #f1f1f1;
+      background-color: #cccccc;
+    }
+
+    &--head {
+      font-weight: 800;
+      font-size: 1.3rem;
+      color: #1a1a1a;
+
+      @include lg-up {
+        font-size: 1.5rem;
+      }
+    }
+
+    &--vorteile-head {
+      padding: 0.5rem 1rem 0.5rem 1.5rem;
+      justify-content: flex-start;
+      border-bottom: 2px solid #f1f1f1; // Fake gap below header
+      background-color: transparent;
+    }
+
+    &--andere-head {
+      justify-content: center;
+      border-bottom: 2px solid #f1f1f1; // Fake gap below header
+      background-color: transparent;
+    }
+
+    svg {
+      max-width: 100%;
+    }
+  }
+
+  // Radiuses
+  .lp-package__row:nth-child(2) {
+    .lp-package__cell--vorteile {
+      border-top-left-radius: 12px;
+    }
+    .lp-package__cell--andere {
+      border-top-right-radius: 12px;
+    }
+  }
+
+  .lp-package__row:last-child {
+    .lp-package__cell {
+      border-bottom: none;
+    }
+    .lp-package__cell--vorteile {
+      border-bottom-left-radius: 12px;
+    }
+    .lp-package__cell--andere {
+      border-bottom-right-radius: 12px;
+    }
+  }
+
+  &__badge-new {
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: 800;
+    color: #559cf2;
+    background-color: #e5f0fe;
+    border: 1px solid #accff7;
+    border-radius: 12px;
+    padding: 0.2rem 0.7rem;
+    margin-left: 0.5rem;
+    line-height: normal;
+
+    @include lg-up {
+      font-size: 1.1rem;
+    }
+  }
+
+  &__cta {
+    margin-top: 3rem;
+
+    @include lg-up {
+      margin-top: 5rem;
+    }
+  }
+}
