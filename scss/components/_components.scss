@@ -359,7 +359,7 @@ details {
   }
 }
 
-// ─── Sticky Mobile Bar ─────────────────────────
+// ─── Sticky Mobile & Desktop Bar ─────────────────────────
 .sticky-bar {
   box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.26);
   position: fixed;
@@ -370,7 +370,7 @@ details {
   background-color: #014799;
   border-radius: 16px;
   padding: 1.4rem 2rem 1.2rem;
-  @include transform(translateY(100%));
+  @include transform(translateY(150%));
   @include transition(
     transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
     opacity 0.4s ease
@@ -386,7 +386,16 @@ details {
   }
 
   @include lg-up {
-    display: none !important;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+    max-width: 990px;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.2rem 2rem;
+    border-radius: 12px;
   }
 
   &__top {
@@ -394,6 +403,11 @@ details {
     align-items: center;
     justify-content: space-between;
     gap: 1.2rem;
+
+    @include lg-up {
+      gap: 2rem;
+      flex-direction: row-reverse;
+    }
   }
 
   &__btn {
@@ -418,6 +432,17 @@ details {
     &:active {
       background-color: darken(#5b9dd6, 8%);
     }
+
+    @include lg-up {
+      background-color: #b3d5fc;
+      color: #014799 !important;
+      font-size: 1.6rem;
+      padding: 1.4rem 4rem;
+
+      &:hover {
+        background-color: darken(#b3d5fc, 5%);
+      }
+    }
   }
 
   &__google {
@@ -432,6 +457,14 @@ details {
       height: 28px;
       width: auto;
       display: block;
+
+      @include lg-up {
+        height: 32px;
+      }
+    }
+
+    @include lg-up {
+      padding: 0.8rem 1.5rem;
     }
   }
 
@@ -443,6 +476,13 @@ details {
     margin-top: 1rem;
     padding-top: 1rem;
     border-top: 1px solid rgba(255, 255, 255, 0.12);
+
+    @include lg-up {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      gap: 2.5rem;
+    }
   }
 
   &__trust-item {
@@ -454,6 +494,11 @@ details {
       width: 14px;
       height: 14px;
       flex-shrink: 0;
+
+      @include lg-up {
+        width: 18px;
+        height: 18px;
+      }
     }
 
     span {
@@ -463,6 +508,11 @@ details {
       line-height: 1;
       color: rgba(255, 255, 255, 0.85);
       white-space: nowrap;
+
+      @include lg-up {
+        font-size: 1.4rem;
+        color: #fff;
+      }
     }
   }
 }

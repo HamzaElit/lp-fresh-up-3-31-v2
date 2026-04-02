@@ -263,17 +263,12 @@ document.addEventListener("DOMContentLoaded", () => {
       .on("scroll", handleSlideVideos)
       .on("reInit", handleSlideVideos);
   });
-  // ─── Sticky Mobile Bar ──────────────────────────────────
+  // ─── Sticky Mobile & Desktop Bar ──────────────────────────────────
   const stickyBar = document.getElementById("stickyBar");
   const heroSection = document.querySelector(".lp-hero");
 
   if (stickyBar && heroSection) {
     const checkStickyBar = () => {
-      if (window.matchMedia("(min-width: 1024px)").matches) {
-        stickyBar.classList.remove("is-visible");
-        return;
-      }
-
       const heroBottom = heroSection.getBoundingClientRect().bottom;
       const docHeight = document.documentElement.scrollHeight;
       const viewportHeight = window.innerHeight;
